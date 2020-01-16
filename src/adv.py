@@ -40,7 +40,10 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-player = Player('Daisy', room['outside'])
+# player = Player('Daisy', room['outside'])
+player = Player(input('Please enter your name: '), room['outside'])
+print(player.name)
+print(room['outside'].n_to)
 
 # Write a loop that:
 #
@@ -53,34 +56,46 @@ player = Player('Daisy', room['outside'])
 #
 # If the user enters "q", quit the game.
 
+# while True:
+#     print(f'Your current location: {player.current_room}')
+#     print(player.current_room.description)
+
+#     user_input = input('What would you like to do?')
+
+#     if user_input == 'n':
+#         if player.current_room.n_to != None:
+#             player.move_room(player.current_room.n_to)
+#         else:
+#             print('Move not allowed, please select another option')
+#     elif user_input == 's':
+#         if player.current_room.s_to != None:
+#             player.move_room(player.current_room.s_to)
+#         else:
+#             print('Move not allowed, please select another option')
+#     elif user_input == 'e':
+#         if player.current_room.e_to != None:
+#             player.move_room(player.current_room.e_to)
+#         else:
+#             print('Move not allowed, please select another option')
+#     elif user_input == 'w':
+#         if player.current_room.w_to != None:
+#             player.move_room(player.current_room.w_to)
+#         else:
+#             print('Move not allowed, please select another option')
+#     elif user_input == 'q':
+#         print('Thanks for playing!')
+#         break
+#     else:
+#         print('Invalid input, please try again')
+
+directions = ['n', 's', 'e', 'w']
+
 while True:
-    print(f'Your current location: {player.current_room}')
-    print(player.current_room.description)
-
-    user_input = input('What would you like to do?')
-
-    if user_input == 'n':
-        if player.current_room.n_to != None:
-            player.move_room(player.current_room.n_to)
-        else:
-            print('Move not allowed, please select another option')
-    elif user_input == 's':
-        if player.current_room.s_to != None:
-            player.move_room(player.current_room.s_to)
-        else:
-            print('Move not allowed, please select another option')
-    elif user_input == 'e':
-        if player.current_room.e_to != None:
-            player.move_room(player.current_room.e_to)
-        else:
-            print('Move not allowed, please select another option')
-    elif user_input == 'w':
-        if player.current_room.w_to != None:
-            player.move_room(player.current_room.w_to)
-        else:
-            print('Move not allowed, please select another option')
-    elif user_input == 'q':
+    cmd = input("~~>").lower()
+    if cmd in directions:
+        player.travel(cmd)
+    elif cmd == 'q':
         print('Thanks for playing!')
-        break
+        exit()
     else:
-        print('Invalid input, please try again')
+        print('I did not recognize tht command')
