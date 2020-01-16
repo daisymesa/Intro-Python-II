@@ -90,12 +90,17 @@ print(room['outside'].n_to)
 
 directions = ['n', 's', 'e', 'w']
 
+# Created basic REPL loop:
 while True:
+    # Read command
     cmd = input("~~>").lower()
+    # Check if it's n/s/e/w/q
     if cmd in directions:
+        # Make player travel in that direction
         player.travel(cmd)
     elif cmd == 'q':
+        # Quit
         print('Thanks for playing!')
         exit()
     else:
-        print('I did not recognize tht command')
+        print('I did not recognize that command')
